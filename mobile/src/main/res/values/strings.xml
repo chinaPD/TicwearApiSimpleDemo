@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">TicwearApiSimpleDemo</string>
 
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="dataTransfer">数据传输</string>
+    <string name="notify2Wear">通知</string>
+
 </resources>
