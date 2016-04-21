@@ -4,4 +4,5 @@
     <string name="dataTransfer">数据传输</string>
     <string name="notify2Wear">通知</string>
 
+    <string name="nodeCheck">Check Nodes</string>
 </resources>

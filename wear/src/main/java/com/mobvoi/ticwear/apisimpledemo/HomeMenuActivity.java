@@ -1,64 +1,47 @@
 package com.mobvoi.ticwear.apisimpledemo;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.wearable.activity.WearableActivity;
-import android.support.wearable.view.BoxInsetLayout;
-import android.view.View;
-import android.widget.TextView;
+import android.support.wearable.view.WearableListView;
+import android.util.Log;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+public class HomeMenuActivity extends Activity implements WearableListView.ClickListener{
 
-public class HomeMenuActivity extends WearableActivity {
+    private static final String TAG = "HomeMenu";
 
-    private static final SimpleDateFormat AMBIENT_DATE_FORMAT =
-            new SimpleDateFormat("HH:mm", Locale.US);
-
-    private BoxInsetLayout mContainerView;
-    private TextView mTextView;
-    private TextView mClockView;
+    private final String[] mElements = {"数据传输", "传感器", "地理位置", "健康数据", "天气", "手势", "语音识别",
+            "语音合成", "语义", "搜索", "快捷卡片", "挠挠", "UI库Demo"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_menu);
-        setAmbientEnabled();
 
-        mContainerView = (BoxInsetLayout) findViewById(R.id.container);
-        mTextView = (TextView) findViewById(R.id.text);
-        mClockView = (TextView) findViewById(R.id.clock);
+        WearableListView listView =
+                (WearableListView) findViewById(R.id.wearable_list);
+
+        // the List Adapter is defined below
+        listView.setAdapter(new ListAdapter(this, mElements));
+
+        listView.setClickListener(this);
     }
 
     @Override
-    public void onEnterAmbient(Bundle ambientDetails) {
-        super.onEnterAmbient(ambientDetails);
-        updateDisplay();
-    }
-
-    @Override
-    public void onUpdateAmbient() {
-        super.onUpdateAmbient();
-        updateDisplay();
-    }
-
-    @Override
-    public void onExitAmbient() {
-        updateDisplay();
-        super.onExitAmbient();
-    }
-
-    private void updateDisplay() {
-        if (isAmbient()) {
-            mContainerView.setBackgroundColor(getResources().getColor(android.R.color.black));
-            mTextView.setTextColor(getResources().getColor(android.R.color.white));
-            mClockView.setVisibility(View.VISIBLE);
-
-            mClockView.setText(AMBIENT_DATE_FORMAT.format(new Date()));
-        } else {
-            mContainerView.setBackground(null);
-            mTextView.setTextColor(getResources().getColor(android.R.color.black));
-            mClockView.setVisibility(View.GONE);
+    public void onClick(WearableListView.ViewHolder v){
+        Integer tag = (Integer) v.itemView.getTag();
+        switch (tag){
+            case 0:{
+                Intent startIntent = new Intent(this, DataTransferActivity.class);
+                startIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(startIntent);
+                break;
+            }
         }
+    }
+
+    @Override
+    public void onTopEmptyRegionClick(){
+
     }
 }

@@ -25,7 +25,7 @@ public class DataTransferActivity extends FragmentActivity{
         setContentView(R.layout.activity_data_thansfer);
 
         ViewPager viewPager = (ViewPager)findViewById(R.id.pager);
-        fragmentList.add("NodeAPI"     ,new Fragment())
+        fragmentList.add("NodeAPI"     ,new NodeApiFragment())
                     .add("MessageAPI"  ,new Fragment())
                     .add("DataAPI"     ,new Fragment());
         viewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(),fragmentList));
