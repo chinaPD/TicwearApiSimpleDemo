@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +49,7 @@ public class NodeApiFragment extends Fragment implements View.OnClickListener,
 
         checkNodeButton = (Button) view.findViewById(R.id.nodeCheckButton);
         nodeText = (TextView) view.findViewById(R.id.nodeText);
+        nodeText.setMovementMethod(ScrollingMovementMethod.getInstance());
 
         checkNodeButton.setOnClickListener(this);
 
@@ -170,7 +172,7 @@ public class NodeApiFragment extends Fragment implements View.OnClickListener,
 
         @Override
         protected void onPostExecute(Boolean result){
-            nodeText.append("the total node number is:" + nodes.size());
+            nodeText.append("the total node number is:" + nodes.size()+"\n");
         }
     }
 }

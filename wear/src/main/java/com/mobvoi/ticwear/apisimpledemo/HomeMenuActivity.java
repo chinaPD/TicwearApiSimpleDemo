@@ -10,8 +10,8 @@ public class HomeMenuActivity extends Activity implements WearableListView.Click
 
     private static final String TAG = "HomeMenu";
 
-    private final String[] mElements = {"数据传输", "传感器", "地理位置", "健康数据", "天气", "手势", "语音识别",
-            "语音合成", "语义", "搜索", "快捷卡片", "挠挠", "UI库Demo"};
+    private final String[] mElements = {"数据传输", "挠挠", "地理位置", "健康数据", "天气", "手势", "语音识别",
+            "语音合成", "语义", "搜索", "快捷卡片", "传感器", "UI库Demo"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,12 @@ public class HomeMenuActivity extends Activity implements WearableListView.Click
         switch (tag){
             case 0:{
                 Intent startIntent = new Intent(this, DataTransferActivity.class);
+                startIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(startIntent);
+                break;
+            }
+            case 1:{
+                Intent startIntent = new Intent(this, NaonaoActivity.class);
                 startIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(startIntent);
                 break;

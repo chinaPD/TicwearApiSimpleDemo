@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="20dp"
-        android:text="@string/nodeCheck"/>
+        android:text="@string/nodeCheck" />
 
     <TextView
         android:id="@+id/nodeText"

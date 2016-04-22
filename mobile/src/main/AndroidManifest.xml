@@ -24,6 +24,9 @@
         <activity
             android:name=".DataTransferActivity"
             android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".NotificationActivity"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>
